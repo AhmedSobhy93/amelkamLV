@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @price.image %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @price.price %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @price.address %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @price.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @price.latitude %>
+</p>
+
+<p>
+  <strong>Avg rating:</strong>
+  <%= @price.avg_rating %>
+</p>
+
+<%= link_to 'Edit', edit_price_path(@price) %> |
+<%= link_to 'Back', prices_path %>
