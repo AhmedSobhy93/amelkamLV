@@ -1,0 +1,31 @@
+
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<h3 class="white">Sign In</h3>
+				<div id="register_errors">
+				
+				</div>
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+				<div>
+<%= f.email_field :email, :autofocus => true ,class: "form-control form-white","placeholder" =>"Email"%></div>
+
+<div>
+
+<%= f.password_field :password ,class: "form-control form-white","placeholder" =>"Password"%></div>
+
+<% if devise_mapping.rememberable? -%>
+
+<div  class"checkbox-holder text-left"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+
+<% end -%>
+<%= f.submit "Sign in", :class => 'btn btn-submit' %>
+
+<% end %>
+
+			</div>
+		</div>
+</div>

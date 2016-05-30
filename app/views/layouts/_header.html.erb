@@ -19,9 +19,17 @@
 					<li><a href="#intro">Home</a></li>
 					<li><a href="#services">Categories</a></li>
 					<li><a href="#team">About Us</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Login</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#modal2" class="btn btn-blue">Sign Up</a></li>
+					<!-- <li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Login</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#modal2" class="btn btn-blue">Sign Up</a></li> -->
 					
+
+                  <% if user_signed_in? %>
+                  <li><a>Welcome <b><%= current_user.name %></b></a></li>
+                  <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'btn btn-danger' %></li>
+                <% else %>
+                 <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small btn-success' %></li>
+                  	<li><%= link_to "Login", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+                <% end %>
 					
 					
 				</ul>
@@ -39,8 +47,9 @@
 							<h3 class="light white">Find the cheepest price.</h3>
 							<h1 class="white typed">Now Pay less Than you did and save your money...
 							</h1>
+
 							<span class="typed-cursor">|</span>
-							  
+							  <%= devise_error_messages! %>
 						</div>
 					</div>
 				</div>
