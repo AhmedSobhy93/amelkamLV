@@ -13,5 +13,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :dob
     devise_parameter_sanitizer.for(:sign_up) << :phone
     devise_parameter_sanitizer.for(:sign_up) << :gender
+    devise_parameter_sanitizer.for(:sign_up) << :avatar
   end
 end

@@ -1,12 +1,20 @@
 class User < ActiveRecord::Base
+
+  mount_uploader :avatar, AvatarUploader
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  attr_accessible :name,:email,:dob,:phone,:password,:gender
+  attr_accessible :name,:email,:dob,:phone,:password,:gender, :remember_me, :avatar, :avatar_cache, :remove_avatar
 
   validates :phone, presence: true, length: {minimum:10 , maximum: 11 }
   validates :name, presence: true, length: {minimum: 6, maximum: 30 }
+
+   validates_presence_of   :avatar
+   validates_integrity_of  :avatar
+   validates_processing_of :avatar
+
 end
