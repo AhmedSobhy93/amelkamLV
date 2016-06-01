@@ -1,5 +1,16 @@
 class User < ActiveRecord::Base
 
+  #include Mongoid::Document
+
+  acts_as_token_authenticatable
+  #field :authentication_token
+
+  # Include default devise modules.
+  #devise :database_authenticatable, :registerable,
+  #       :recoverable, :rememberable, :trackable, :validatable,
+  #       :confirmable, :omniauthable
+  #include DeviseTokenAuth::Concerns::User
+
   mount_uploader :avatar, AvatarUploader
 
   # Include default devise modules. Others available are:

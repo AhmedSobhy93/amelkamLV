@@ -59,6 +59,7 @@ class ProductsController < ApplicationController
             pri.product_id = @product_id
             pri.save
             format.html { render :inline => "1" }
+            
           else
             format.html { render :inline => "2" }
           end

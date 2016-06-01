@@ -42,6 +42,12 @@ gem 'carrierwave'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# gem for auth 
+# gem 'devise_token_auth' # Token based authentication for Rails JSON APIs
+# gem 'omniauth' # required for devise_token_auth
+#gem 'devise-token_authenticatable'
+gem 'simple_token_authentication', '~> 1.0' # see semver.org
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

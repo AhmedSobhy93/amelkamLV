@@ -45,7 +45,8 @@
 				<%= f.label :Date_Of_Birth  %>
 				<%= f.date_select :dob ,start_year: 1980 ,end_year: 2000%></div>
 
-				<div><%= f.file_field :avatar %>	</div>
+				<div>
+				<%= f.file_field :avatar , value: "Upload Profile Photo"  %>	</div>
 				<div><%= f.hidden_field :avatar_cache %>	</div>
 				
 				<p><div><%= f.submit "Sign up", :class => 'btn btn-submit' %></div></p>

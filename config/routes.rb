@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #mount_devise_token_auth_for 'User', at: 'auth'
   get 'welcome/index'
 
   resources :prices
@@ -7,6 +8,24 @@ Rails.application.routes.draw do
   resources :rates
   resources :categories
   devise_for :users
+
+  namespace :api do
+    namespace :v1  do
+      resources :tokens,:only => [:create, :destroy]
+    end
+  end
+
+namespace :api do
+  namespace :v1 do
+    devise_scope :user do
+      post 'registrations' => 'registrations#create', :as => 'register'
+      post 'sessions' => 'sessions#create', :as => 'login'
+      delete 'sessions' => 'sessions#destroy', :as => 'logout'
+    end
+  end
+end
+
+
 
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
