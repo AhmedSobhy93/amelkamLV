@@ -1,7 +1,12 @@
-class ProductsController < ApplicationController
- # before_action :set_product, only: [:show, :edit, :update, :destroy]
+class ProductsController < ApplicationController 
+#before_action :set_product, only: [:show, :edit, :update, :destroy]
+skip_before_filter :authenticate_user!#, :only => :show, :index
+#skip_before_filter :authenticate
 skip_before_filter :verify_authenticity_token 
-skip_before_filter :authenticate_user!
+skip_before_filter :require_no_authentication
+    config.to_prepare do
+      Devise::SessionsController.skip_before_filter :your_before_filter_here
+    end
 
   # GET /products
   # GET /products.json
@@ -50,16 +55,18 @@ end
 # POST /products
   # POST /products.json
   def apicreate
+puts params[:product_name]
+puts "fdsfds"
      @product_name = params[:product_name]
     @desc = params[:desc]
-    @cat_id = params[:cat_id]
+    @cat_id = 1
     @barcode = params[:barcode]
     @image = "sfdsfds"#params[:image]
     @price = params[:price]
     @address = params[:address]
     @longitude = params[:longitude]
     @latitude = params[:latitude]
-    @owner_id = params[:owner_id]
+    @owner_id = 3
 respond_to do |format|
   if @product_name!="" && @desc!="" && @cat_id!="" && @barcode!="" && @image!="" && @price!="" && @address!="" && @longitude!="" && @latitude!="" && @owner_id!=""
    @product = Product.find_by_barcode(@barcode)

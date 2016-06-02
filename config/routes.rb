@@ -25,15 +25,8 @@ namespace :api do
   end
 end
 
-
-
-#namespace :api do
-#  namespace :v1 do
-#      post 'product' => 'product#create', :as => 'register'
-#  end
-#end
-
   post 'api/v1/product' => 'products#apicreate'
+
 
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
