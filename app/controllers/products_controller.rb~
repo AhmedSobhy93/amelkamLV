@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+ # before_action :set_product, only: [:show, :edit, :update, :destroy]
+skip_before_filter :verify_authenticity_token 
+skip_before_filter :login_required
 
   # GET /products
   # GET /products.json
@@ -24,30 +26,54 @@ class ProductsController < ApplicationController
 
   # POST /products
   # POST /products.json
-  def create
-    @product_name = params[:product][:product_name]
-    @desc = params[:product][:desc]
-    @cat_id = params[:product][:cat_id]
-    @barcode = params[:product][:barcode]
-    @image = params[:product][:image]
-    @price = params[:product][:price]
-    @address = params[:product][:address]
-    @longitude = params[:product][:longitude]
-    @latitude = params[:product][:latitude]
-    @owner_id = params[:product][:owner_id]
+def create
+ @product = Product.new(product_params)
+
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'product was successfully created.' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+end
+
+
+
+
+
+
+
+
+# POST /products
+  # POST /products.json
+  def apicreate
+     @product_name = params[:product_name]
+    @desc = params[:desc]
+    @cat_id = params[:cat_id]
+    @barcode = params[:barcode]
+    @image = "sfdsfds"#params[:image]
+    @price = params[:price]
+    @address = params[:address]
+    @longitude = params[:longitude]
+    @latitude = params[:latitude]
+    @owner_id = params[:owner_id]
+respond_to do |format|
   if @product_name!="" && @desc!="" && @cat_id!="" && @barcode!="" && @image!="" && @price!="" && @address!="" && @longitude!="" && @latitude!="" && @owner_id!=""
    @product = Product.find_by_barcode(@barcode)
-    if @product!= nil
-        respond_to do |format|
-            newproduct = Proudct.new
+    if @product == nil
+        
+            newproduct = Product.new
             newproduct.name = @product_name
             newproduct.description = @desc
             newproduct.category_id = @cat_id
             newproduct.barcode = @barcode
             
             
-          if product.save
-            prodid = product.id
+          if newproduct.save
+            prodid = newproduct.id
             pri = Price.new
             pri.image = @image
             pri.price = @price
@@ -59,53 +85,22 @@ class ProductsController < ApplicationController
             pri.product_id = @product_id
             pri.save
             format.html { render :inline => "1" }
+            
           else
             format.html { render :inline => "2" }
+          
           end
-        end
 
 
         
     else
-        respond_to do |format|
             format.html { render :inline => "0" }
-        end
     end 
   else
-      respond_to do |format|
             format.html { render :inline => "2" }
-        end
   end
 
-
-
-
-
-    @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, price: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
   end
-
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
-  def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, price: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /products/1
