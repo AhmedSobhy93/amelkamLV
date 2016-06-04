@@ -10,7 +10,11 @@
 					<span class="icon-bar"></span>
 				</button>
 				<% if user_signed_in? %>
-					<%= image_tag(current_user.avatar.url, width: 80 ,height: 80) %>
+				<figure>
+					<%= image_tag(current_user.avatar.url, width: 80 ,height: 80) %>					  
+ 					<figcaption> <a>Welcome <b><%= current_user.name %></b></a></figcaption>
+				</figure> 
+
 				<% else %>
 					<a class="navbar-brand" href="#">
 						<%= image_tag "logo-active.png", :alt => "Logo " ,width: "80" %>	
@@ -23,13 +27,14 @@
 				    
 					<li><a href="#intro">Home</a></li>
 					<li><a href="#services">Categories</a></li>
-					<li><a href="#team">About Us</a></li>
+					<li><a href="#products">Products</a></li>
+					<li><a href="#pricing">About Us</a></li>
 					<!-- <li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Login</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#modal2" class="btn btn-blue">Sign Up</a></li> -->
 					
 
                   <% if user_signed_in? %>
-                  <li><a>Welcome <b><%= current_user.name %></b></a></li>
+                 
                   <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'btn btn-danger' %></li>
                 <% else %>
                  <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small btn-success' %></li>
@@ -57,7 +62,7 @@
 							  <%= devise_error_messages! %>
 							  <p class="notice"><%= notice %></p>
 							  <p class="alert"><%= alert %></p>
-							  <%= yield %>
+							  
 						</div>
 					</div>
 				</div>

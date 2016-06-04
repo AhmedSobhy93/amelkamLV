@@ -7,13 +7,9 @@ Rails.application.routes.draw do
   resources :comments
   resources :rates
   resources :categories
-  devise_for :users
+  devise_for :users 
 
-  namespace :api do
-    namespace :v1  do
-      resources :tokens,:only => [:create, :destroy]
-    end
-  end
+ 
 
 namespace :api do
   namespace :v1 do
@@ -26,14 +22,6 @@ namespace :api do
 end
 
 
-
-#namespace :api do
-#  namespace :v1 do
-#      post 'product' => 'product#create', :as => 'register'
-#  end
-#end
-
-  post 'api/v1/product' => 'products#apicreate'
 
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
