@@ -21,6 +21,10 @@ namespace :api do
   end
 end
 
+<<<<<<< HEAD
+=======
+  post 'api/v1/product' => 'products#apicreate'
+>>>>>>> c50b95aea574062c5895a65506e1c23233f621e5
 
 
   root 'welcome#index'

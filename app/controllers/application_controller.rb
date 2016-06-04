@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
   #include DeviseTokenAuth::Concerns::SetUserByToken
 
+
   #before_filter :authenticate_user!, :except=>:index
   #skip_before_filter :login_required, only: [:new, :create]
 
   acts_as_token_authentication_handler_for User
+  #acts_as_token_authentication_handler_for User
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
