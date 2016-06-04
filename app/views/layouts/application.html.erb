@@ -154,17 +154,20 @@
 
 		<div class="container">
 			<div class="row text-center title">
-				<h2>Categories</h2>
-				<% yield %>
+				<h2> <%= @categoriesSize %> Categories</h2>
+				
 				<h4 class="light muted">Achieve the best best price for your required product!</h4>
 			</div>
 			<div class="row services">
-				<div class="col-md-4">
+		<% if @categoriesSize > 0 %>
+			<% @parent_categories.each do |c| %>
+		
+				<div class="col-md-<%= 12/@categoriesSize %> ">
 					<div class="service">
 						<div class="icon-holder">
 							<img src="img/icons/heart-blue.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">Technology</h4>
+						<h4 class="heading"><%=	c.name %></h4>
 						<div class="description">
 						<table class="table table-bordered table-condensed">
 						  <tbody>
@@ -184,54 +187,13 @@
 						</table></div>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="service">
-						<div class="icon-holder">
-							<img src="img/icons/guru-blue.png" alt="" class="icon">
-						</div>
-						<h4 class="heading">food and retail</h4>
-						<div class="description">
-						<table class="table table-bordered table-condensed">
-						  <tbody>
-						    <tr>
-						      <td><a href="#" class="btn-sm btn-primary"><i class="icon-check icon-white">fast food</i></a></td>
-						      <td><a href="#"></a><br /></td>
-						    </tr>
-						    <tr>
-						      <td><a href="#" class="btn-sm btn-primary"><i class="icon-check icon-white">retail</i></a></td>
-						      <td><a href="#">rice,tea</a><br /></td>
-						    </tr>
-						   
-						  </tbody>
-						</table></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="service">
-						<div class="icon-holder">
-							<img src="img/icons/weight-blue.png" alt="" class="icon">
-						</div>
-						<h4 class="heading">fashion</h4>
-						<div class="description">
-						<table class="table table-bordered table-condensed">
-						  <tbody>
-						    <tr>
-						      <td><a href="#" class="btn-sm btn-primary"><i class="icon-check icon-white">Men</i></a></td>
-						      <td><a href="#">shoes,clothes</a><br /></td>
-						    </tr>
-						    <tr>
-						      <td><a href="#" class="btn-sm btn-primary"><i class="icon-check icon-white">Women</i></a></td>
-						      <td><a href="#">shoes,clothes</a><br /></td>
-						    </tr>
-						   	 <tr>
-						      <td><a href="#" class="btn-sm btn-primary"><i class="icon-check icon-white">Kids</i></a></td>
-						      <td><a href="#"></a>Boys,Girls<br /></td>
-						    </tr>
 
-						  </tbody>
-						</table></div>
-					</div>
+				<%	end %>
+				<% else %>
+				<div class="col-md-12">
+				<h3> Sorry We don't have Categories Right now ..Add Categories to DB ..</h3>
 				</div>
+			<% end %>
 			</div>
 		</div>
 		<div class="cut cut-bottom"></div>

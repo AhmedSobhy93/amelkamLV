@@ -13,7 +13,21 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
- 
+
+  before_action :getCategories
+  before_action :categoriesCount
+
+  
+  def getCategories
+    @parent_categories = Category.where('category_id is NULL')
+  end
+
+  def categoriesCount
+    #@categoriesSize = Category.find_by_category_id(nil).size
+    @categoriesSize = Category.where('category_id is NULL').size
+  end
+
+
   protected
 
   def configure_permitted_parameters
