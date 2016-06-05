@@ -160,44 +160,47 @@
 			</div>
 			<div class="row services">
 		<% if @categoriesSize > 0 %>
-			<% @parent_categories.each do |c| %>
-		
+			<% @parent_categories.each do |c| %>	
+
 				<div class="col-md-<%= 12/@categoriesSize %> ">
 					<div class="service">
 						<div class="icon-holder">
 							<img src="img/icons/heart-blue.png" alt="" class="icon">
 						</div>
-						<h4 class="heading"><%=	c.name %></h4>
+						<h4 class="heading"><%=	c.name %> id: <%= c.id %> cat_id<%= c.category_id %></h4>
 						<div class="description">
-						<table class="table table-bordered table-condensed">
-						  <tbody>
-						    <tr>
-						      <td><a href="#" class="btn-sm btn-primary"><i class="icon-check icon-white">Mobiles</i></a></td>
-						      <td><a href="#">Samsung,LG,Nokia</a><br /></td>
-						    </tr>
-						    <tr>
-						      <td><a href="#" class="btn-sm btn-primary"><i class="icon-check icon-white">Electronics</i></a></td>
-						      <td><a href="#">laptop,Tvs</a><br /></td>
-						    </tr>
-						    <tr>
-						      <td><a href="#" class="btn-sm btn-primary"><i class="icon-check icon-white">Gears</i></a></td>
-						      <td><a href="#">handfree,</a><br /></td>
-						    </tr>
-						  </tbody>
-						</table></div>
+
+							<% @categories.each do |c1| %>
+								<table class="table table-bordered table-condensed">
+								  <tbody>
+									  <% if c.id == c1.category_id %>
+									    <tr>
+									      <td><a href="#" class="btn btn-sm btn-info"><%= c1.name %></a></td>
+									    </tr>
+									  <% end %>
+									  <!-- if -->
+								  </tbody>
+								</table>
+							<% end %>
+							<!-- Categories end -->
+						</div>
 					</div>
 				</div>
-
+				
 				<%	end %>
+				<!-- Parent categories end -->
 				<% else %>
 				<div class="col-md-12">
 				<h3> Sorry We don't have Categories Right now ..Add Categories to DB ..</h3>
 				</div>
 			<% end %>
+			<!-- IF end -->
 			</div>
 		</div>
 		<div class="cut cut-bottom"></div>
 	</section>
+
+	
 	<section id="products" class="section gray-bg">
 		<div class="container">
 			<div class="row title text-center">
