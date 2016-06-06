@@ -24,6 +24,7 @@ end
 
   post 'api/v1/product' => 'products#apicreate'
 
+  get 'fetch_products' => 'products#from_category', as: 'fetch_products' 
 
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,22 @@
+
+<section id="products" class="section gray-bg">
+		<div class="container">
+			<div class="row title text-center">
+				<h2 class="margin-top">Products</h2>
+				<h4 class="light muted">Know more about product prices!</h4>
+				<h4 class="light muted">
+
+				</h4>
+			</div>
+			<div id="items_grid" >
+  			  <%= render partial: 'products_list', locals: {products: products}  %>
+ 			 </div>
+			<ul class="pagination pagination-lg">
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+</ul>
+		</div>
+	</section>

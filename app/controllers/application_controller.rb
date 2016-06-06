@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   
   def getCategories
+    @categories = Category.all
     @parent_categories = Category.where('category_id is NULL')
   end
 

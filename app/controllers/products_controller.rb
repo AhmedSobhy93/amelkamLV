@@ -61,14 +61,17 @@ puts "fdsfds"
     @desc = params[:desc]
     @cat_id = 1
     @barcode = params[:barcode]
-    @image = params[:image]
+    #@image = params[:image]
+    @avatar = params[:avatar]
+
+#@avatar.save();
     @price = params[:price]
     @address = params[:address]
     @longitude = params[:longitude]
     @latitude = params[:latitude]
     @owner_id = 3
 respond_to do |format|
-  if @product_name!="" && @desc!="" && @cat_id!="" && @barcode!="" && @image!="" && @price!="" && @address!="" && @longitude!="" && @latitude!="" && @owner_id!=""
+  if @product_name!="" && @desc!="" && @cat_id!="" && @barcode!="" && @avatar!="" && @price!="" && @address!="" && @longitude!="" && @latitude!="" && @owner_id!=""
    @product = Product.find_by_barcode(@barcode)
     if @product == nil
 
@@ -82,29 +85,36 @@ respond_to do |format|
           if newproduct.save
             prodid = newproduct.id
             pri = Price.new
-            pri.image = @image
+            pri.image = "gdf"#@avatar
             pri.price = @price
             pri.address = @address
             pri.longitude = @longitude
             pri.latitude = @latitude
-            pri.user_id = @owner_id
-            pri.avg_rating = "5"
-            pri.product_id = @product_id
+            pri.user_id = 1#@owner_id
+            pri.avg_rating = 5
+            pri.product_id = prodid
+            puts "before price"
             pri.save
-            format.html { render :inline => "1" }
+            puts "after saveing price"
+          #  format.html { render :inline => "1" }
+#render :json =>{:auth_token => user.authentication_token ,:email =>user.email },:status =>201
+
+             format.json { render :json => {:status=> "1"} }
 
           else
-            format.html { render :inline => "2" }
-
+          #  format.html { render :inline => "2" }
+           format.json { render :json =>  "2" }
           end
 
 
 
     else
-            format.html { render :inline => "0" }
+          #  format.html { render :inline => "0" }
+           format.json { render :json =>  "0" }
     end
   else
-            format.html { render :inline => "2" }
+          #  format.html { render :inline => "2" }
+             format.json { render :json =>  "2" }
   end
 
   end
@@ -119,6 +129,16 @@ respond_to do |format|
       format.json { head :no_content }
     end
   end
+
+
+  def from_category
+    @products = Product.where(:category_id => params[:cat_id])
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

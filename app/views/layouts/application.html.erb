@@ -149,7 +149,6 @@
 	</section>
 	
 
-
 <section id="services" class="section section-padded">
 
 		<div class="container">
@@ -167,7 +166,7 @@
 						<div class="icon-holder">
 							<img src="img/icons/heart-blue.png" alt="" class="icon">
 						</div>
-						<h4 class="heading"><%=	c.name %> id: <%= c.id %> cat_id<%= c.category_id %></h4>
+						<h4 class="heading"><%=	c.name %> </h4>
 						<div class="description">
 
 							<% @categories.each do |c1| %>
@@ -175,7 +174,7 @@
 								  <tbody>
 									  <% if c.id == c1.category_id %>
 									    <tr>
-									      <td><a href="#" class="btn btn-sm btn-info"><%= c1.name %></a></td>
+									      <td><%= link_to c1.name,fetch_products_path(:cat_id => c1.id),:remote =>true,class:'btn btn-sm btn-info' %></td>
 									    </tr>
 									  <% end %>
 									  <!-- if -->
@@ -200,85 +199,11 @@
 		<div class="cut cut-bottom"></div>
 	</section>
 
-	
-	<section id="products" class="section gray-bg">
-		<div class="container">
-			<div class="row title text-center">
-				<h2 class="margin-top">Products</h2>
-				<h4 class="light muted">Know more about product prices!</h4>
-				<h4 class="light muted">
-				
 
-				</h4>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('team/tv.jpg'
-						); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$9,999.99</h3>
-								<h5 class="light light-white">78” Class KS9800 9-Series Curved 4K SUHD TV (2016 Model) </h5>
-							</div>
-						</div>
-						
+	<!-- Products Section -->
+	<%= render partial: 'application/products_grid', locals: { products: @products} %>
 
-						<%= image_tag "team/tv1.png", :alt => nil,class: "avatar" %>
-						<div class="title">
-							<h4>TV Samsung</h4>
-							<h5 class="muted regular">The best Tv ever</h5>
-						</div>
-						<button data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill">Show Details</button>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('team/tv.jpg'
-						); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$9,999.99</h3>
-								<h5 class="light light-white">78” Class KS9800 9-Series Curved 4K SUHD TV (2016 Model) </h5>
-							</div>
-						</div>
-						
 
-						<%= image_tag "team/tv1.png", :alt => nil,class: "avatar" %>
-						<div class="title">
-							<h4>TV Samsung</h4>
-							<h5 class="muted regular">The best Tv ever</h5>
-						</div>
-						<button data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill">Show Details</button>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('team/tv.jpg'
-						); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$9,999.99</h3>
-								<h5 class="light light-white">78” Class KS9800 9-Series Curved 4K SUHD TV (2016 Model) </h5>
-							</div>
-						</div>
-						
-
-						<%= image_tag "team/tv1.png", :alt => nil,class: "avatar" %>
-						<div class="title">
-							<h4>TV Samsung</h4>
-							<h5 class="muted regular">The best Tv ever</h5>
-						</div>
-						<button data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill">Show Details</button>
-					</div>
-				</div>
-			</div>
-			<ul class="pagination pagination-lg">
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-</ul>
-		</div>
-	</section>
 	<section id="pricing" class="section">
 		<div class="container">
 			<div class="row title text-center">
