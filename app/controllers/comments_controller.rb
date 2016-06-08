@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
-skip_before_filter :verify_authenticity_token
+# skip_before_filter :verify_authenticity_token
   skip_before_filter :authenticate_user!
   # GET /comments
   # GET /comments.json

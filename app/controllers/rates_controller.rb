@@ -1,5 +1,7 @@
 class RatesController < ApplicationController
   before_action :set_rate, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
+
 
   # GET /rates
   # GET /rates.json
@@ -60,6 +62,33 @@ class RatesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+#POST api/v1/rate.json
+  def apicreate
+       @rate = params[:rate]
+       @price_id = params[:price_id]
+       @user_id = params[:user_id]
+
+       rate =Rate.new 
+
+       rate.rate= @rate
+       rate.price_id= @price_id
+       rate.user_id= @user_id
+
+
+
+      respond_to do |format|
+        if rate.save
+          format.json {render :json => {:status=> "1"} }
+        else
+          format.json { render :json => {:status=> "2"} }
+        end
+      end 
+
+    end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
