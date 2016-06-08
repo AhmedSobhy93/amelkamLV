@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  min_price: 9.99
+  max_price: 9.99
+  address: 9.99
+
+two:
+  name: MyString
+  min_price: 9.99
+  max_price: 9.99
+  address: 9.99

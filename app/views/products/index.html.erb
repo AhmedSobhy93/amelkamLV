@@ -2,6 +2,12 @@
 
 <h1>Listing Products</h1>
 
+
+<%= form_tag products_path, :method =>'get' do %>
+<%= text_field_tag :search, params[:search],:placeholder => "Enter search keyword" %>
+<%= submit_tag "Search"%>
+<% end %>
+
 <table>
   <thead>
     <tr>
