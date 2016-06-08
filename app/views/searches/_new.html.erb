@@ -1,0 +1,26 @@
+
+		<div >
+			<h1> Advance Search </h1>
+
+			<%= form_for Search.new, html: {class: "pure-form"} do |s| %>
+				<div class ="field">
+					<%= s.label :address %><br />
+					<%= s.text_field :address, :placeholder => "address"%>
+				</div>
+
+				<div class ="field">
+					<%= s.label :min_price %><br />
+					<%= s.text_field :min_price, size: 10, :placeholder => "min price" %>
+				</div>
+
+				<div class ="field">
+					<%= s.label :max_price %><br />
+					<%= s.text_field :max_price, size: 10, :placeholder => "max price"%>
+				</div>
+
+				<div class ="actions">
+					<%= s.submit "Search", class: "pure-button pure-button-primary" %>
+				</div>
+			<% end %>
+		</div>
+
