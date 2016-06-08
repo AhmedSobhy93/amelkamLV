@@ -66,7 +66,7 @@ class PricesController < ApplicationController
     end
   end
 
-  #POST 
+  #POST api/v1/price.json
   def apicreate
        @image = params[:image]
        @price = params[:price]
