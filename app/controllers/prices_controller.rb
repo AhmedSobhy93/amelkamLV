@@ -65,19 +65,20 @@ class PricesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   #POST api/v1/price.json
+
+
   def apicreate
        @image = params[:image]
        @price = params[:price]
        @address = params[:address]
        @long = params[:longitude]
        @lat = params[:latitude]
-       @avg_rating = params[:avg_rating]
+       @avg_rating = 100.0
        @product_id = 1
        @user_id = 2
 
-       price =Price.new 
+       price =Price.new
 
        price.image= @image
        price.price= @price
@@ -96,7 +97,7 @@ class PricesController < ApplicationController
         else
           format.json { render :json => {:status=> "2"} }
         end
-      end 
+      end
 
 
     end
