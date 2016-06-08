@@ -18,7 +18,9 @@
 <body>
 	<%= render "welcome/login_modal" %>                 
     <%= render "welcome/sign_up_modal" %> 
+        <%= render "welcome/add_product_modal" %> 
 
+    
 	<div class="preloader">
 		<%= image_tag "loader.gif" , :alt => "Preloader image",class: "icon" %>
 	</div>
@@ -190,7 +192,7 @@
 				<!-- Parent categories end -->
 				<% else %>
 				<div class="col-md-12">
-				<h3> Sorry We don't have Categories Right now ..Add Categories to DB ..</h3>
+				<h3 class="muted regular text-center "> Sorry We don't have Categories Right now ..Add Categories to DB ..</h3>
 				</div>
 			<% end %>
 			<!-- IF end -->

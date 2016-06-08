@@ -1,5 +1,10 @@
 class PricesController < ApplicationController
+
+  # load_and_authorize_resource
   before_action :set_price, only: [:show, :edit, :update, :destroy]
+
+  skip_before_filter :verify_authenticity_token
+  skip_before_filter :authenticate_user!
 
   # GET /prices
   # GET /prices.json
@@ -61,6 +66,41 @@ class PricesController < ApplicationController
     end
   end
 
+  #POST 
+  def apicreate
+       @image = params[:image]
+       @price = params[:price]
+       @address = params[:address]
+       @long = params[:longitude]
+       @lat = params[:latitude]
+       @avg_rating = params[:avg_rating]
+       @product_id = 1
+       @user_id = 2
+
+       price =Price.new 
+
+       price.image= @image
+       price.price= @price
+       price.address=@address
+       price.longitude = @long
+       price.latitude = @lat
+       price.avg_rating=@avg_rating
+       price.product_id=@product_id
+       price.user_id=@user_id
+
+
+
+      respond_to do |format|
+        if price.save
+          format.json {render :json => {:status=> "1"} }
+        else
+          format.json { render :json => {:status=> "2"} }
+        end
+      end 
+
+
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_price
@@ -71,4 +111,7 @@ class PricesController < ApplicationController
     def price_params
       params.require(:price).permit(:image, :price, :address, :longitude, :latitude, :avg_rating)
     end
+
+
+
 end

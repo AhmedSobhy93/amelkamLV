@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   #include DeviseTokenAuth::Concerns::SetUserByToken
 
-
+  include CanCan::ControllerAdditions
   #before_filter :authenticate_user!, :except=>:index
   #skip_before_filter :login_required, only: [:new, :create]
 
-  acts_as_token_authentication_handler_for User
+  # acts_as_token_authentication_handler_for User
   #acts_as_token_authentication_handler_for User
 
   # Prevent CSRF attacks by raising an exception.
@@ -16,8 +16,12 @@ class ApplicationController < ActionController::Base
 
   before_action :getCategories
   before_action :categoriesCount
-
+  before_action :newProduct
   
+  def newProduct
+    @product = Product.new
+  end
+
   def getCategories
     @categories = Category.all
     @parent_categories = Category.where('category_id is NULL')

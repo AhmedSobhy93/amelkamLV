@@ -23,6 +23,8 @@ end
 
 
   post 'api/v1/product' => 'products#apicreate'
+  post 'api/v1/price' => 'prices#apicreate'
+
 
   get 'fetch_products' => 'products#from_category', as: 'fetch_products' 
 

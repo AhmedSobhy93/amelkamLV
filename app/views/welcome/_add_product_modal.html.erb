@@ -1,0 +1,30 @@
+
+
+<div class="modal fade" id="add_product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<h3 class="white">Add Product</h3>
+				<div id="register_errors">
+				
+				</div>
+				<%= form_for(@product, :url => products_path, :html => {:multipart => true}) do |f| %>
+
+<!-- 				<%= devise_error_messages! %>
+ -->
+ 					<%= f.text_field :name ,:autofocus =>true ,class: 'form-control form-white',placeholder:'Product Name' %>
+
+ 					<%= f.text_field :barcode ,:autofocus =>true ,class: 'form-control form-white',placeholder:'Product Barcode' %>
+
+ 					<%= f.text_field :description ,:autofocus =>true ,class: 'form-control form-white',placeholder:'Product Description' %>
+ 					
+ 					<%= collection_select(:product,:category_id,@categories,:id,:name,prompt: true ,class:'animated lightSpeedIn') %>
+
+ 					<p><div><%= f.submit "Submit", :class => 'btn btn-submit' %></div></p>
+			
+				
+
+		<% end %>
+			</div>
+		</div>
+</div>
