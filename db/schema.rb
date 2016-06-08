@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601102600) do
+ActiveRecord::Schema.define(version: 20160608093327) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 20160601102600) do
 
   add_index "rates", ["price_id"], name: "index_rates_on_price_id", using: :btree
   add_index "rates", ["user_id"], name: "index_rates_on_user_id", using: :btree
+
+  create_table "searches", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.decimal  "min_price",              precision: 10
+    t.decimal  "max_price",              precision: 10
+    t.decimal  "address",                precision: 10
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
