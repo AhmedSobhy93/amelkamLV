@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
+  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
+skip_before_filter :verify_authenticity_token
+  skip_before_filter :authenticate_user!
   # GET /comments
   # GET /comments.json
   def index
@@ -60,6 +63,32 @@ class CommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+#POST api/v1/comment.json
+  def apicreate
+       @body = params[:body]
+       @price_id = params[:price_id]
+       @user_id = params[:user_id]
+
+       comment =Comment.new 
+
+       comment.body= @body
+       comment.price_id= @price_id
+       comment.user_id= @user_id
+
+
+
+      respond_to do |format|
+        if comment.save
+          format.json {render :json => {:status=> "1"} }
+        else
+          format.json { render :json => {:status=> "2"} }
+        end
+      end 
+
+    end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -59,13 +59,25 @@
 							</h1>
 							 			
 							<span class="typed-cursor">|</span>
-							<form role="form">
-							
+							<form role="form" action="#search">
+
+							<!-- Use one of them -->
 							  <div class="form-group">
 							    <label for="inputsm">Search for Product</label>
 							    <input class="form-control input-sm" id="inputsm" type="text" placeholder="Type Product Name">
 							  </div>
 							</form>
+
+							<div class="input-group" id="adv-search">
+				                <input class="form-control" placeholder="Search for Products" type="text">
+				                <div class="input-group-btn">
+				                    <div class="btn-group" role="group">
+				                       
+				                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+				                    </div>
+				                </div>
+				            </div>
+				            <!-- //////////////search forms -->
 							  <%= devise_error_messages! %>
 							  <p class="notice"><%= notice %></p>
 							  <p class="alert"><%= alert %></p>
