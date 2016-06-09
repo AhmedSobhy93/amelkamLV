@@ -10,6 +10,12 @@ class Product < ActiveRecord::Base
 		end
 	end
 
-  mount_uploader :image, AvatarUploader
-has_many :prices
+  	mount_uploader :image, AvatarUploader
+	has_many :prices
+
+
+	def self.search name
+	  return scoped unless name.present? 
+	  where(['name LIKE ?', "%#{name}%"]) 
+	end
 end

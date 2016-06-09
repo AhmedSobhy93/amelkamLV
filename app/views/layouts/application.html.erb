@@ -16,7 +16,8 @@
 </head>
 
 <body>
-	<%= render "welcome/login_modal" %>                 
+	<%= render "welcome/login_modal" %>
+	<%= render "product_details" %>                 
     <%= render "welcome/sign_up_modal" %> 
         <%= render "welcome/add_product_modal" %> 
 
@@ -216,32 +217,13 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
-					<!-- <form class="form-horizontal" role="form">
-                                  <div class="form-group">
-                                    <label for="filter">Filter by</label>
-                                    <select class="form-control">
-                                        <option value="0" selected="">All Categories</option>
-                                        <option value="1">Tv's</option>
-                                        <option value="2">Mobiles</option>
-                                        <option value="3">Food</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="contain">Price</label>
-                                    <input class="form-control" type="text">
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="contain">Contains the words</label>
-                                    <input class="form-control" type="text">
-                                  </div>
-                                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </form> -->
-                               <%= render 'searches/new' %> 
+					<%= render 'search_form' %>
+
+                    
 				</div>
 				<div class="col-sm-8">
 					<div id='result-search'>
-<!-- 						<h1>Search Result </h1> -->
-						<%= render 'searches/show'%>
+						<h1>Search Result </h1>
 					</div>
 				</div>
 			</div>

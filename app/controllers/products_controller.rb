@@ -139,6 +139,14 @@ respond_to do |format|
     end
   end
 
+  def product_details
+    @product = Product.find_by_id(params[:product_id])
+
+    respond_to do |f|
+      f.js
+    end
+  end
+
 
   def apiListProductByCatID
     @products = Product.where(:category_id => params[:id].to_i)

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search/index'
+
   #mount_devise_token_auth_for 'User', at: 'auth'
   get 'welcome/index'
 
@@ -30,6 +32,8 @@ end
 
 
   get 'fetch_products' => 'products#from_category', as: 'fetch_products' 
+  get 'product_details' => 'products#product_details' ,as: 'product_details'
+
   get 'api/v1/listCategories' => 'categories#apiListCategories'
   get 'api/v1/ListSubCategories' => 'categories#apiListSubCategoriesByCatID'
   get 'api/v1/ListProducts' => 'products#apiListProductByCatID'
@@ -37,6 +41,7 @@ end
   get 'api/v1/ListPrice' => 'prices#apiListPriceById'
 
 
+  get 'search' =>'search#index'
 
   
   root 'welcome#index'

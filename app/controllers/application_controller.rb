@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   def getCategories
     @categories = Category.all
     @parent_categories = Category.where('category_id is NULL')
+    @sub_categories = Category.where('category_id is NOT NULL')
   end
 
   def categoriesCount
