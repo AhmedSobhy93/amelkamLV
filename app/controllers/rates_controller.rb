@@ -70,9 +70,9 @@ class RatesController < ApplicationController
        @price_id = params[:price_id]
        @user_id = params[:user_id]
 
-       rate =Rate.new 
+       rate =Rate.new
 
-       rate.rate= @rate
+       rate.rate= @rate.to_i
        rate.price_id= @price_id
        rate.user_id= @user_id
 
@@ -84,7 +84,7 @@ class RatesController < ApplicationController
         else
           format.json { render :json => {:status=> "2"} }
         end
-      end 
+      end
 
     end
 
