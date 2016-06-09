@@ -140,6 +140,15 @@ respond_to do |format|
   end
 
 
+  def apiListProductByCatID
+    @products = Product.where(:category_id => params[:id].to_i)
+
+    respond_to do |f|
+      f.json {render :json => @products}
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

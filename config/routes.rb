@@ -31,6 +31,12 @@ end
 
   get 'fetch_products' => 'products#from_category', as: 'fetch_products' 
   get 'api/v1/listCategories' => 'categories#apiListCategories'
+  get 'api/v1/ListSubCategories' => 'categories#apiListSubCategoriesByCatID'
+  get 'api/v1/ListProducts' => 'products#apiListProductByCatID'
+  get 'api/v1/ListPrices' => 'prices#apiListPricesByProductID'
+  get 'api/v1/ListPrice' => 'prices#apiListPriceById'
+
+
 
   
   root 'welcome#index'

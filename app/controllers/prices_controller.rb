@@ -102,6 +102,25 @@ class PricesController < ApplicationController
 
     end
 
+
+    def apiListPricesByProductID
+
+      @prices = Price.where(product_id: params[:id])
+
+      respond_to do |f|
+        f.json{render :json => @prices}
+      end  
+    end
+
+    def apiListPriceById
+      @price = Price.where(id: params[:id])
+
+      respond_to do |f|
+        f.json{render :json => @price}
+      end
+    end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_price
