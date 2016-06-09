@@ -31,8 +31,8 @@ end
 
   get 'fetch_products' => 'products#from_category', as: 'fetch_products' 
   get 'api/v1/listCategories' => 'categories#apiListCategories'
+  get 'api/v1/ListSubCategories' => 'categories#apiListSubCategoriesByCatID'
 
-  
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
