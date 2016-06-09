@@ -26,9 +26,13 @@ end
   post 'api/v1/price' => 'prices#apicreate'
   post 'api/v1/comment' => 'comments#apicreate'
   post 'api/v1/rate' => 'rates#apicreate'
+  
+
 
   get 'fetch_products' => 'products#from_category', as: 'fetch_products' 
+  get 'api/v1/listCategories' => 'categories#apiListCategories'
 
+  
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
