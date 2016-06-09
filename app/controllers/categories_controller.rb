@@ -67,6 +67,15 @@ class CategoriesController < ApplicationController
     end
   end
 
+
+  def apiListCategories
+    @parent_categories = Category.where('category_id is NULL').select('id','name')
+
+    respond_to do |f|
+      f.json {render :json=> @parent_categories }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category

@@ -216,7 +216,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
-					<form class="form-horizontal" role="form">
+					<!-- <form class="form-horizontal" role="form">
                                   <div class="form-group">
                                     <label for="filter">Filter by</label>
                                     <select class="form-control">
@@ -235,11 +235,13 @@
                                     <input class="form-control" type="text">
                                   </div>
                                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </form>
+                                </form> -->
+                               <%= render 'searches/new' %> 
 				</div>
 				<div class="col-sm-8">
 					<div id='result-search'>
-						<h1>Search Result </h1>
+<!-- 						<h1>Search Result </h1> -->
+						<%= render 'searches/show'%>
 					</div>
 				</div>
 			</div>

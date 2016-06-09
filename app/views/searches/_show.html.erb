@@ -1,0 +1,17 @@
+<h1>Search Result</h1>
+<p><%= link_to 'Back',new_search_path %></p>
+
+<% if Search.new.search_prices.empty? %>
+	<p>No data found</p>
+
+<% else %>
+	<% Search.new.search_prices.each do |c| %>
+	<br>
+
+	<div class= "div">
+		<h1>Address <%= c.address %></h1>
+		<p>Price <%= c.price %></p>
+	</div>
+	<% end %>
+
+<% end %>
