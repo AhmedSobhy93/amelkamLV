@@ -147,11 +147,16 @@ respond_to do |format|
 
 
   def apiproduct_update
- respond_to do |format|
-      if @ordr.update(ordr_params)
-        format.json { render :show, status: :ok, location: @ordr }
+ @product_name = params[:product_name]
+ @product_name = params[:product_name]
+ @desc = params[:desc]
+ @product_id = params[:product_id]
+ @res = Product.find_by_id(params[:product_id]).update(:name => @product_name ,:description => @desc , :category_id => @cat_id)
+respond_to do |format|
+      if @res
+        format.json { render :show, status: :ok, location: @res }
       else
-        format.json { render json: @ordr.errors, status: :unprocessable_entity }
+        format.json { render json: @res.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -159,6 +164,15 @@ respond_to do |format|
 
   def apiproduct_details
     @product = Product.find_by_id(params[:product_id])
+
+    respond_to do |f|
+      f.json {render :json => @product}
+    end
+  end
+
+
+  def apiproduct_delete
+    @product = Product.find_by_id(params[:product_id]).destroy
 
     respond_to do |f|
       f.json {render :json => @product}

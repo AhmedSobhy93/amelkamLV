@@ -51,15 +51,13 @@ end
 #####################
   get 'api/v1/getProduct' => 'products#apiproduct_details'
   post 'api/v1/getProduct' => 'products#apiproduct_update'
-#  get 'api/v1/ListProducts' => 'products#apiListProductByCatID'
-#  get 'api/v1/ListProducts' => 'products#apiListProductByCatID'
-#  get 'api/v1/ListProducts' => 'products#apiListProductByCatID'
-
-
+  get 'api/v1/deleteProduct' => 'products#apiproduct_delete'
 #######################
 #Price API
 ##########################
-
+  get 'api/v1/apiGetPrice' => 'prices#apiGetPriceById'
+  post 'api/v1/getPrice' => 'prices#apiprice_update'
+  get 'api/v1/deletePrice' => 'prices#apiprice_delete'
 
   
   root 'welcome#index'
