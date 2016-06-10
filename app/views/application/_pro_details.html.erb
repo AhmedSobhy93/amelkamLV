@@ -1,1 +1,52 @@
-<%= product.name %>
+
+
+ 
+
+ <% product_details.each do |p| %>
+
+
+<h2 class="light white"><%= p.name %> </h2><h6 class="light white">Added at <%= time_ago_in_words(p.created_at)  %> ago</h6>
+
+
+<% end %>
+
+
+<% if product_prices.empty? %>
+
+<h5 class="light white"><b>This Prodcut Don't have any prices yet .. Be The First One ..  </b></h5>
+
+<% else %>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Price</th>
+        <th>Product Image</th>
+        <th>Address</th>
+        <th>Average Rating</th>
+        <th>Created By</th>
+        <th>Added At</th>
+      </tr>
+    </thead>
+
+
+<% product_prices.each do |pp| %>	
+
+
+    <tbody>
+     
+      <tr class="info">
+        <td><%= pp.price %></td>
+        <td><%= image_tag(pp.image, width: 80 ,height: 80,alt:'product-image') %></td>
+        <td><%= pp.address %></td>
+        <td><%= pp.avg_rating %></td>
+        <td><%= pp.user.name %></td>
+        <td><%= time_ago_in_words(pp.created_at)  %> ago</td>
+      </tr>
+    </tbody>
+
+    <% end %>
+  </table>
+
+  <% end %>
