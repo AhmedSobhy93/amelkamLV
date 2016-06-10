@@ -35,6 +35,21 @@ class ApplicationController < ActionController::Base
   end
 
 
+
+def checkLoginAPI
+
+ @user=User.find_by(email: params[:email],authentication_token: params[:token])
+ if @user!= nil
+
+puts @user.name
+puts    params[:token]
+else
+
+render :json =>"Sorry Wrong ",:status=>420
+end  
+end
+
+
   protected
 
   def configure_permitted_parameters
