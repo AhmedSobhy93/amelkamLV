@@ -135,10 +135,12 @@ respond_to do |format|
   end
 
   def product_details
-    @product = Product.find_by_id(params[:product_id])
-
+    @product_details = Product.where(:id => params[:product_id])
+    @product_prices = Price.where(:product_id => params[:product_id])
+    
     respond_to do |f|
       f.js
+      f.json {render :json => @product_details}
     end
   end
 
