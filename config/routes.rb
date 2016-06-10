@@ -42,6 +42,7 @@ end
 
 
   get 'search' =>'search#index'
+  get 'api/v1/searchbarcode/:barcode' =>'search#apiSearch'
 
   
   root 'welcome#index'
