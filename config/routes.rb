@@ -42,7 +42,24 @@ end
 
 
   get 'search' =>'search#index'
+#######################
+###Search API
+##########################
   get 'api/v1/searchbarcode/:barcode' =>'search#apiSearch'
+#######################
+#Product API
+#####################
+  get 'api/v1/getProduct' => 'products#apiproduct_details'
+  post 'api/v1/getProduct' => 'products#apiproduct_update'
+#  get 'api/v1/ListProducts' => 'products#apiListProductByCatID'
+#  get 'api/v1/ListProducts' => 'products#apiListProductByCatID'
+#  get 'api/v1/ListProducts' => 'products#apiListProductByCatID'
+
+
+#######################
+#Price API
+##########################
+
 
   
   root 'welcome#index'

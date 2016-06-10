@@ -14,7 +14,8 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 # user = User.new(user_params)
 
     if user.save
-      render :json =>{:auth_token => user.authentication_token ,:email =>user.email },:status =>201
+render :json =>{:auth_token => user.authentication_token, :id =>user.id ,:name=>user.name,:logged =>true ,:email =>user.email },:status =>201
+     # render :json =>{:auth_token => user.authentication_token ,:email =>user.email },:status =>201
       return 
     else
       render :json =>user.errors,:status=>420
