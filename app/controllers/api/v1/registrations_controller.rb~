@@ -4,14 +4,14 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
   def create
-puts "fsdfdsfdsfs"
-puts params.inspect 
-puts params[:name]
+# puts "fsdfdsfdsfs"
+# puts params.inspect 
+# puts params[:name]
    user = User.new(params)
 #prd = Product.new
 #prd.email = "jjj"
 #prd.encrypted_password = 1
-#user = User.new(user_params)
+# user = User.new(user_params)
 
     if user.save
       render :json =>{:auth_token => user.authentication_token ,:email =>user.email },:status =>201

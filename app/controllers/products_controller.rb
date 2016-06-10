@@ -55,16 +55,11 @@ end
 # POST /products
   # POST /products.json
   def apicreate
-puts params[:product_name]
-puts "fdsfds"
-     @product_name = params[:product_name]
+    @product_name = params[:product_name]
     @desc = params[:desc]
     @cat_id = 1
     @barcode = params[:barcode]
-    #@image = params[:image]
     @avatar = params[:avatar]
-
-#@avatar.save();
     @price = params[:price]
     @address = params[:address]
     @longitude = params[:longitude]
@@ -146,6 +141,41 @@ respond_to do |format|
     respond_to do |f|
       f.js
       f.json {render :json => @product_details}
+    end
+  end
+
+
+
+  def apiproduct_update
+ @product_name = params[:product_name]
+ @product_name = params[:product_name]
+ @desc = params[:desc]
+ @product_id = params[:product_id]
+ @res = Product.find_by_id(params[:product_id]).update(:name => @product_name ,:description => @desc , :category_id => @cat_id)
+respond_to do |format|
+      if @res
+        format.json { render :show, status: :ok, location: @res }
+      else
+        format.json { render json: @res.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  def apiproduct_details
+    @product = Product.find_by_id(params[:product_id])
+
+    respond_to do |f|
+      f.json {render :json => @product}
+    end
+  end
+
+
+  def apiproduct_delete
+    @product = Product.find_by_id(params[:product_id]).destroy
+
+    respond_to do |f|
+      f.json {render :json => @product}
     end
   end
 
