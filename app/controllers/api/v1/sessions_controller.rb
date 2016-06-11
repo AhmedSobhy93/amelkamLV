@@ -28,7 +28,12 @@ class Api::V1::SessionsController  < Devise::SessionsController
       if not @user.valid_password?(password)
         render :status=>401,:json=>{:message=>"Invalid email or password"}
       else
-        render :status=>200,:json=>{:token=>@user.authentication_token}
+        #render :status=>200,:json=>{:token=>@user.authentication_token}
+
+@user.authentication_token = nil
+@user.save
+render :json =>{:auth_token => @user.authentication_token, :id =>@user.id ,:name=>@user.name,:logged =>true ,:email =>@user.email },:status =>201
+
       end
 
   end

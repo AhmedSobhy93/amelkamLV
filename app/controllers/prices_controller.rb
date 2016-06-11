@@ -159,6 +159,45 @@ class PricesController < ApplicationController
       end
     end
 
+########################
+    def apiGetPriceById
+      @price = Price.where(id: params[:id])
+
+      respond_to do |f|
+        f.json{render :json => @price}
+      end
+    end
+
+#######################
+    def apiprice_update
+
+       @price = params[:price]
+       @address = params[:address]
+       @long = params[:longitude]
+       @lat = params[:latitude]
+	@res = Product.find_by_id(params[:product_id]).update(:price => @price ,:address => @address , :long => @long , :lat => @lat)
+	respond_to do |format|
+	      if @res
+		format.json { render :show, status: :ok, location: @res }
+	      else
+		format.json { render json: @res.errors, status: :unprocessable_entity }
+	      end
+	    end
+    end
+
+########################
+    def apiprice_delete
+      @price = Price.find_by_id(params[:id]).destroy
+
+      respond_to do |f|
+        f.json{render :json => @price}
+      end
+    end
+
+
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

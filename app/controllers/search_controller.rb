@@ -31,7 +31,7 @@ class SearchController < ApplicationController
   	else
   		@products_search = Product.where("barcode = ?",barcode).all
   	end	
-render :status=>200,:json=>{:result=>@products_search}
+render :status=>200,:json=>@products_search
   	#respond_to do |format|
       	#	format.js 
     #end
