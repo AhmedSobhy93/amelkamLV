@@ -1,5 +1,5 @@
 class PricesController < ApplicationController
-
+  include ProductsHelper
   # load_and_authorize_resource
   before_action :set_price, only: [:show, :edit, :update, :destroy]
 
@@ -67,6 +67,45 @@ class PricesController < ApplicationController
   end
   #POST api/v1/price.json
 
+
+  def add_price
+    # p_price = params[:price][:price]
+    # p_address= params[:price][:address]
+    # p_image = params[:file]
+
+
+    # price = Price.new(params)
+    # @price.price = p_price
+    # price.address =p_address
+    # price.image=p_image
+
+       @image = params[:image]
+       @price = params[:price][:price]
+       @address = params[:price][:address]
+       @long = params[:price][:longitude]
+       @lat = params[:price][:latitude]
+       @product_id = get_current_product_id
+       @user_id = current_user.id
+
+       price =Price.new
+
+       price.image= @image
+       price.price= @price
+       price.address=@address
+       price.longitude = @long
+       price.latitude = @lat
+       price.avg_rating=@avg_rating
+       price.product_id=@product_id
+       price.user_id=@user_id
+
+
+
+    if price.save
+      redirect_to root_path,notice: "Price was successfully Added"
+    else
+      redirect_to root_path,notice: "Price was not successfully Added"
+    end
+  end
 
   def apicreate
        @image = params[:image]

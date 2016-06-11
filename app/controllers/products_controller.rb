@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  include ProductsHelper
+
 #before_action :set_product, only: [:show, :edit, :update, :destroy]
 skip_before_filter :authenticate_user!#, :only => :show, :index
 #skip_before_filter :authenticate
@@ -142,7 +144,7 @@ respond_to do |format|
   def product_details
     @product_details = Product.where(:id => params[:product_id])
     @product_prices = Price.where(:product_id => params[:product_id])
-    
+    set_current_product_id(params[:product_id])
     respond_to do |f|
       f.js
       f.json {render :json => @product_details}

@@ -44,7 +44,9 @@ end
   get 'search' =>'search#index'
   get 'api/v1/searchbarcode/:barcode' =>'search#apiSearch'
 
-  
+  post 'add_price' =>'prices#add_price'
+
+
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

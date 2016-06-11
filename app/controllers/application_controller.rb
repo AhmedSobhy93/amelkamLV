@@ -17,10 +17,10 @@ class ApplicationController < ActionController::Base
 
   before_action :getCategories
   before_action :categoriesCount
-  before_action :newProduct
+  before_action :newPrice
   
-  def newProduct
-    @product = Product.new
+  def newPrice
+    @price = Price.new
   end
 
   def getCategories
