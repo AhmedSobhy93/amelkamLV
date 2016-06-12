@@ -65,8 +65,19 @@ class PricesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  #POST api/v1/price.json
+  
 
+  def price_details
+
+    @price_details = Price.where(:id => params[:price_id])
+
+    respond_to do |f|
+      f.js
+      f.json {render :json => @price_details}
+    end
+  end
+
+#POST api/v1/price.json
 
   def add_price
     # p_price = params[:price][:price]

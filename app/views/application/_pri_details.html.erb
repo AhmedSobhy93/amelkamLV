@@ -1,0 +1,55 @@
+<% price_details.each do |p| %>
+
+  <h2 class="light white"><%= p.price %> </h2><h6 class="light white">Added <%= time_ago_in_words(p.created_at)  %> ago</h6>
+
+ 
+<div class="detailBox">
+    <div class="titleBox">
+      <label>Comments</label>
+    </div>
+    <div class="commentBox">
+        
+        <p class="taskDescription light white">You can find this price at  <h6 class="light white"><b> <%= p.address %></b></h6></p>
+    </div>
+    <div class="actionBox">
+        <ul class="commentList ">
+         <% p.comments.each do |c| %>
+     
+            <li>
+                <div class="commenterImage">
+                <% if c.user.avatar.nil? %>
+                    <%= image_tag "logo-active.png" %>
+                <% else %>
+                   <%= image_tag(c.user.avatar) %>
+                <% end %>
+                </div>
+                <div class="commentText">
+                    <h6 class="light "><%= c.body %></h6>
+                    <span class="light white "><sup><b><%= time_ago_in_words(c.created_at) %> ago</b></sup></span>
+
+                </div>
+            </li>
+           
+<% end %>
+<!-- comments end -->
+        </ul>
+
+        <%= form_tag add_comment_path,method: :post,html:{class:'form-inline',role:'form' } do%>
+
+            <%= hidden_field_tag 'price_id',p.id %>
+            <div class="form-group">
+                <%= text_field_tag :comment_body,params[:comment_body],class:'form-control',placeholder: 'Your Comment' %>
+            </div>
+
+            <div class="form-group">
+                <%= submit_tag "add Comment" , class: "btn btn-submit" %>
+
+            </div>
+
+            <% end %>
+    </div>
+</div>
+
+
+<% end %>
+<!-- price Deatils end -->

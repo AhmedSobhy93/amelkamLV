@@ -1,6 +1,6 @@
 <% product_details.each do |p| %>
 
-	<h2 class="light white"><%= p.name %> </h2><h6 class="light white">Added at <%= time_ago_in_words(p.created_at)  %> ago</h6>
+	<h2 class="light white"><%= p.name %> </h2><h6 class="light white">Added <%= time_ago_in_words(p.created_at)  %> ago</h6>
 
 
 
@@ -14,11 +14,12 @@
     <thead class="thead-inverse">
       <tr class="light white">
         <th>Price</th>
-        <th>Product Image</th>
+        <th>Image</th>
         <th>Address</th>
-        <th>Average Rating</th>
-        <th>Created By</th>
+        <th>Rate</th>
+        <th>Added By</th>
         <th>Added At</th>
+        <th>Details</th>
       </tr>
     </thead>
 
@@ -35,6 +36,10 @@
         <td><%= pp.avg_rating %></td>
         <td><%= pp.user.name %></td>
         <td><%= time_ago_in_words(pp.created_at)  %> ago</td>
+        <td><%= link_to 'See-More',price_details_path(:price_id => pp.id),:remote =>true ,'data-toggle' => "modal",'data-target' => '#price_details_modal',class:'btn-sm btn-info' %></td>
+
+       
+
       </tr>
     </tbody>
 
@@ -46,7 +51,7 @@
 
   <% end %>
 <div class="light">
-	<%= link_to 'Add Price', "#add_price", "data-toggle" => "modal", :class => 'btn btn-info' %>
+	<%= link_to 'Add Price', "#add_price", "data-toggle" => "modal", :class => 'btn btn-submit' %>
 </div>
 <% end %>
 <!-- Product Deatils end -->

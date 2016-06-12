@@ -17,36 +17,46 @@
 
 				<%= f.text_field :name, :autofocus => true ,class: "form-control form-white","placeholder" =>"Name"%></div>
 
-
+				<br/>
 				<div>
 
 				<%= f.email_field :email ,class: "form-control form-white","placeholder" =>"Email"%></div>
-
+				<br/>
 				<div>
 
 				<%= f.password_field :password ,class: "form-control form-white","placeholder" =>"Password"%></div>
-
+				<br/>
 				<div>
 
 				<%= f.password_field :password_confirmation ,class: "form-control form-white","placeholder" =>"Password Confirmation"%></div>
-
+				<br/>
 				<div>
 
 				<%= f.number_field :phone ,class: "form-control form-white","placeholder" =>"Phone Number"%></div>
 
-				
+				<br/>
 				<div class="form-group">
 
 				<%= f.select :gender, options_for_select(["Gender ","Male","Female"]), {}, class: "form-control" %></div>
 
 
-
+				<br/>
 				<div>
-				<%= f.label :Date_Of_Birth  %>
+				<h4><%= f.label :Date_Of_Birth,class:'light white'  %>
 				<%= f.date_select :dob ,start_year: 1980 ,end_year: 2000%></div>
+				</h4>
+				<br/>
+				
 
-				<div>
-				<%= f.file_field :avatar , value: "Upload Profile Photo"  %>	</div>
+					 <div style="position:relative;">
+						<a class='btn btn-primary' href='javascript:;'>
+							Upload Profile Image...
+							<input type="file" name="avatar" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+						</a>
+						&nbsp;
+						<span class='label label-info' id="upload-file-info"></span>
+					</div>
+
 				<div><%= f.hidden_field :avatar_cache %>	</div>
 				
 				<p><div><%= f.submit "Sign up", :class => 'btn btn-submit' %></div></p>

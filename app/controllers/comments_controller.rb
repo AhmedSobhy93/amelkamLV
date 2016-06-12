@@ -65,6 +65,27 @@ class CommentsController < ApplicationController
   end
 
 
+  def add_comment
+    price_id = params[:price_id]
+    comment_body = params[:comment_body]
+    @comment = Comment.new
+    @comment.body = comment_body
+    @comment.user_id = current_user.id
+    @comment.price_id =price_id
+
+    respond_to do |f|
+
+      if @comment.save
+        f.html {redirect_to root_path ,notice:'Comment was successfully added'}
+      else
+        f.html {redirect_to root_path ,notice:'Comment was not successfully added'}
+      end
+    end
+
+
+  end
+
+
 #POST api/v1/comment.json
   def apicreate
        @body = params[:body]

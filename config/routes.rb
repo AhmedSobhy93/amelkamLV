@@ -58,9 +58,10 @@ end
   get 'api/v1/apiGetPrice' => 'prices#apiGetPriceById'
   post 'api/v1/getPrice' => 'prices#apiprice_update'
   get 'api/v1/deletePrice' => 'prices#apiprice_delete'
-
+  ################
   post 'add_price' =>'prices#add_price'
-
+  get 'price_details' => 'prices#price_details'
+  post 'add_comment' =>'comments#add_comment'
 
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

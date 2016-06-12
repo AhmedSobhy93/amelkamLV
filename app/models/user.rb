@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   attr_accessible :name,:email,:dob,:phone,:password,:gender, :remember_me, :avatar, :avatar_cache, :remove_avatar
   
   has_many :prices
-
+  has_many :comments
 
   #validates :phone, presence: true, length: {minimum:10 , maximum: 11 }
   #validates :name, presence: true, length: {minimum: 6, maximum: 30 }
