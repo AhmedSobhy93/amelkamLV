@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 
-	belongs_to :prices
+	# belongs_to :prices
 	
 	def self.search(search)
 		if search

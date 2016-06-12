@@ -1,5 +1,5 @@
 class Price < ActiveRecord::Base
-  has_one :products
+  # has_one :products
 	
   attr_accessible :image,:price,:address,:product_id,:user_id,:avg_rating
 

@@ -1,1 +1,1 @@
-$('#result-search').html("<%= escape_javascript(render partial: 'products_list', locals: { products: @products_search } ) %>"); 
+$('#result-search').html("<%= escape_javascript(render partial: 'search_products_list', locals: { products_search: @products_search } ) %>"); 

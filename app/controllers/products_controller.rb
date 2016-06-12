@@ -127,7 +127,7 @@ respond_to do |format|
     end
   end
 
-
+#GET fetch_products
   def from_category
     @products = Product.where(:category_id => params[:cat_id])
     

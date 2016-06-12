@@ -10,16 +10,13 @@ class SearchController < ApplicationController
   		@products_search=nil
   	else
   		@products_search = Product.where("name LIKE :name1 AND category_id = :category_id1",
-  {:name1 => "#{product_name}%", :category_id1 => cat_id}).all
+  {:name1 => "%#{product_name}%", :category_id1 => cat_id}).all
   	end	
 
   	respond_to do |format|
-      		format.js 
+  			format.js
     end
   end
-
-
-
 
 
 

@@ -11,7 +11,7 @@
 				</button>
 				<% if user_signed_in? %>
 				<figure>
-					<%= image_tag(current_user.avatar.url, width: 80 ,height: 80) %>					  
+					<%= image_tag(current_user.avatar.url, width: 70 ,height: 50) %>					  
  					<figcaption> <a>Welcome <b><%= current_user.name %></b></a></figcaption>
 				</figure> 
 
@@ -36,10 +36,11 @@
 
                   <% if user_signed_in? %>
                  
-                  <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'btn btn-danger' %></li>
+                  <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => ' btn-danger' %></li>
                 <% else %>
-                 <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small btn-success' %></li>
-                  	<li><%= link_to "Login", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+                 <li ><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal", :class => 'light white ' %></li>
+                  
+                  <li><%= link_to "Login", "#login", "data-toggle" => "modal", :class => 'light white' %></li>
                 <% end %>
 					
 					

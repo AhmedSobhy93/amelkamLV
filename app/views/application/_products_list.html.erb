@@ -1,6 +1,6 @@
 
 <% if products.blank? %>
-<h5 class="muted regular text-center ">Please Choose Category First To Show you products</h5>
+<h5 class="muted regular text-center ">Sorry this category Doesn't have any product yet</h5>
 <% else %>
 <h5 class="muted regular text-center ">List Of products</h5>
 
@@ -8,16 +8,11 @@
 		<% products.each do |product| %>
 				<div class="col-md-4">
 					<div class="team text-center">
-						<div class="cover" style="background:url('team/tv.jpg'
-						); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$9,999.99</h3>
-								<h5 class="light light-white">any thing</h5>
-							</div>
-						</div>
 						
-
-						<%= image_tag "team/tv1.png", :alt => nil,class: "avatar" %>
+						
+						<% product.prices.sort_by{|t| - t.created_at.to_i}.last(1).each do |pp| %>
+							<%= image_tag pp.image, :alt => nil,class: "avatar",width:'256' ,height:'256' %>
+						<% end %>
 						<div class="title">
 							<h4><%= product.name %></h4>
 							<h5 class="muted regular"><%= product.description %></h5>
