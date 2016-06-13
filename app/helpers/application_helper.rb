@@ -6,6 +6,11 @@ def resource_name
 
 end
 
+
+def paginate(collection, params= {})
+    will_paginate collection, params.merge(:renderer => RemoteLinkPaginationHelper::LinkRenderer)
+end
+
 def resource
 
 @resource ||= User.new

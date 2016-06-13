@@ -5,6 +5,7 @@
 <h5 class="muted regular text-center ">List Of products</h5>
 
 	<div class="row">
+		<%= paginate products_search %>
 		<% products_search.each do |product| %>
 				<div class="col-md-4">
 					<div class="team text-center">

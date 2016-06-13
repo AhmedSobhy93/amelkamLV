@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   get 'search/index'
 
   #mount_devise_token_auth_for 'User', at: 'auth'
@@ -7,7 +8,6 @@ Rails.application.routes.draw do
   resources :prices
   resources :products
   resources :comments
-  resources :rates
   resources :categories
   devise_for :users 
   resources :searches
