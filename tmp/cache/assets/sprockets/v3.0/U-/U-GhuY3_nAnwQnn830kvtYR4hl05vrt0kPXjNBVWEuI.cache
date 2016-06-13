@@ -1,0 +1,22 @@
+{:uriI"‰file://app/assets/images/favicons/manifest.json?type=application/json&id=e16ddc38677b333010370d5c09eca39be03a00f9625de78a72731cf093bdaeaf:ET:load_pathI"app/assets/images;T:filenameI"-app/assets/images/favicons/manifest.json;T:	nameI"favicons/manifest;T:logical_pathI"favicons/manifest.json;T:content_typeI"application/json;T:sourceI"*{
+	"name": "My app",
+	"icons": [
+		{
+			"src": "\/img\/favicons\/android-chrome-36x36.png",
+			"sizes": "36x36",
+			"type": "image\/png",
+			"density": "0.75"
+		},
+		{
+			"src": "\/img\/favicons\/android-chrome-48x48.png",
+			"sizes": "48x48",
+			"type": "image\/png",
+			"density": "1.0"
+		}
+	]
+}
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"@processors:type=application/json&file_type=application/json;TTI";file-digest://app/assets/images/favicons/manifest.json;TTF:charsetI"
+utf-8;F:digest"%«¢Ní2DÅ·.ñÄcÎhW®Ò¯mº` €àq¾‘>c„m:lengthi*:dependencies_digest"%era5¥n±,8÷(°zsÒ£şÖ‰nu†?²KR}$:idI"Ee16ddc38677b333010370d5c09eca39be03a00f9625de78a72731cf093bdaeaf;F:
+mtimel+Ê92W

@@ -48,7 +48,21 @@ gem 'carrierwave'
 #gem 'devise-token_authenticatable'
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
 
+#not working gem 
+#gem 'ajaxful_rating'
+
+gem 'ratyrate'
+
 gem 'cancancan', '~> 1.10'
+#
+gem 'ajax_pagination'
+gem 'will_paginate', '~> 3.0'
+gem 'jquery-historyjs'
+#
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

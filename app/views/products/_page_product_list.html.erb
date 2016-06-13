@@ -1,0 +1,22 @@
+  <%= paginate @products %>
+
+		
+		<% @products.each do |product| %>
+				<div class="col-md-4">
+					<div class="team text-center">
+						
+						
+						<% product.prices.sort_by{|t| - t.created_at.to_i}.last(1).each do |pp| %>
+							<%= image_tag pp.image, :alt => nil,class: "avatar",width:'256' ,height:'256' %>
+						<% end %>
+						<div class="title">
+							<h4><%= product.name %></h4>
+							<h5 class="muted regular"><%= product.description %></h5>
+						</div>
+
+						<%= link_to "Show Details",product_details_path(:product_id => product.id),:remote =>true, "data-toggle" => "modal",'data-target' => '#show_details', :class => 'btn btn-blue-fill' %> 
+
+					</div>
+				</div>
+				
+		<% end %>

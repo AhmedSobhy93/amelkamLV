@@ -1,1 +1,1 @@
-$("#price_details_div").html("<%= escape_javascript(render partial: 'pri_details', locals: {price_details: @price_details } ) %>"); 
+$("#price_details_div").html("<%= escape_javascript(render partial: 'pri_details', locals: {price_details: @price_details,comments:@comments } ) %>"); 

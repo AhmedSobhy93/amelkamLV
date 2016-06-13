@@ -129,16 +129,18 @@ respond_to do |format|
 
 #GET fetch_products
   def from_category
-    @products = Product.where(:category_id => params[:cat_id])
+    @products = product_scope.paginate(page: params[:page], per_page: 3)
     
     respond_to do |format|
+      format.html
       format.js
     end
   end
 
   def product_details
+
     @product_details = Product.where(:id => params[:product_id])
-    @product_prices = Price.where(:product_id => params[:product_id])
+    @product_prices = Price.where(:product_id => params[:product_id]).paginate(page: params[:page], per_page: 3)
     set_current_product_id(params[:product_id])
     respond_to do |f|
       f.js
@@ -201,4 +203,9 @@ respond_to do |format|
     def product_params
       params.require(:product).permit(:name, :description, :barcode)
     end
+
+
+  def product_scope
+      Product.where(:category_id => params[:cat_id])
+  end
 end

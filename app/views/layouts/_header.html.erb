@@ -32,12 +32,11 @@
 					<li><a href="#pricing">About Us</a></li>
 					<!-- <li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Login</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#modal2" class="btn btn-blue">Sign Up</a></li> -->
-					
-
                   <% if user_signed_in? %>
                  
                   <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => ' btn-danger' %></li>
                 <% else %>
+              
                  <li ><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal", :class => 'light white ' %></li>
                   
                   <li><%= link_to "Login", "#login", "data-toggle" => "modal", :class => 'light white' %></li>
@@ -61,6 +60,8 @@
 							</h1>
 							 			
 							<span class="typed-cursor">|</span>
+
+
 							<!-- <form role="form" action="#search">
 
 							  <div class="form-group">

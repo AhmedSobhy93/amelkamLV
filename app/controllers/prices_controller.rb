@@ -69,9 +69,12 @@ class PricesController < ApplicationController
 
   def price_details
 
-    @price_details = Price.where(:id => params[:price_id])
+    @price_details = price_scope
+    @comments = comment_scope.paginate(page: params[:page], per_page: 3)
+    @price = Price.find_by_id(params[:price_id])
 
     respond_to do |f|
+      f.html
       f.js
       f.json {render :json => @price_details}
     end
@@ -221,6 +224,10 @@ class PricesController < ApplicationController
       params.require(:price).permit(:image, :price, :address, :longitude, :latitude, :avg_rating)
     end
 
-
-
+    def price_scope
+      Price.where(:id => params[:price_id])
+    end
+    def comment_scope
+      Comment.where(price_id:params[:price_id])
+    end
 end

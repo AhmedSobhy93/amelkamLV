@@ -5,7 +5,10 @@
 <h5 class="muted regular text-center ">List Of products</h5>
 
 	<div class="row">
-		<% products.each do |product| %>
+		
+		<%= paginate @products %>
+
+		<% @products.each do |product| %>
 				<div class="col-md-4">
 					<div class="team text-center">
 						
@@ -24,11 +27,12 @@
 				</div>
 				
 		<% end %>
+
 	</div>
 
 	
 
-<% end %>
+<% end %> 
 
 
 
