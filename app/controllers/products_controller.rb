@@ -130,7 +130,7 @@ respond_to do |format|
 #GET fetch_products
   def from_category
     @products = Product.where(:category_id => params[:cat_id])
-    
+
     respond_to do |format|
       format.js
     end
@@ -166,9 +166,9 @@ respond_to do |format|
 
   def apiproduct_details
     @product = Product.find_by_id(params[:product_id])
-
+    @price =Price.where(:product_id=>params[:product_id]).limit(1)
     respond_to do |f|
-      f.json {render :json => @product}
+      f.json {render :json =>{ :product=>@product, :price=>@price}}
     end
   end
 
