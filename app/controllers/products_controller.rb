@@ -129,8 +129,13 @@ respond_to do |format|
 
 #GET fetch_products
   def from_category
+<<<<<<< HEAD
+    @products = Product.where(:category_id => params[:cat_id])
+
+=======
     @products = product_scope.paginate(page: params[:page], per_page: 3)
     
+>>>>>>> 2b2c306887732c24790de065f90dbc40d11ff02d
     respond_to do |format|
       format.html
       format.js
@@ -168,9 +173,9 @@ respond_to do |format|
 
   def apiproduct_details
     @product = Product.find_by_id(params[:product_id])
-
+    @price =Price.where(:product_id=>params[:product_id]).limit(1)
     respond_to do |f|
-      f.json {render :json => @product}
+      f.json {render :json =>{ :product=>@product, :price=>@price}}
     end
   end
 
