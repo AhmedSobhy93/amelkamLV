@@ -40,7 +40,9 @@
           <% end %>
           <!-- comments end -->
         </ul>
-
+        <% if current_user.nil? %>
+        <span class="light white ">Please <b>Sign Up</b> Or <b>Login</b> First To Add Comment</span>
+        <% else %>
         <%= form_tag add_comment_path,method: :post,html:{class:'form-inline',role:'form' } do%>
 
             <%= hidden_field_tag 'price_id',p.id %>
@@ -54,6 +56,8 @@
             </div>
 
             <% end %>
+
+        <% end %>
     </div>
 </div>
 
