@@ -57,6 +57,7 @@ gem 'cancancan', '~> 1.10'
 #
 gem 'ajax_pagination'
 gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate', '0.0.10'
 gem 'jquery-historyjs'
 #
 gem 'omniauth'
