@@ -1,1 +1,6 @@
+jQuery('.categories').click(function (event) {
+    window.location.href= '#products';
+});
+
 $("#items_grid").html("<%= escape_javascript(render partial: 'products_list', locals: { products: @products } ) %>"); 
+

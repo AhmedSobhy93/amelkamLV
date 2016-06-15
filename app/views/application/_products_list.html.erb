@@ -4,10 +4,10 @@
 <% else %>
 <h5 class="muted regular text-center ">List Of products</h5>
 
+			
+
 	<div class="row">
 		
-		<%= paginate @products %>
-
 		<% @products.each do |product| %>
 				<div class="col-md-4">
 					<div class="team text-center">
@@ -30,7 +30,15 @@
 
 	</div>
 
-	
+		<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+			<%= paginate @products %>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
 
 <% end %> 
 

@@ -129,16 +129,12 @@ respond_to do |format|
 
 #GET fetch_products
   def from_category
-<<<<<<< HEAD
-    @products = Product.where(:category_id => params[:cat_id])
 
-=======
     @products = product_scope.paginate(page: params[:page], per_page: 3)
     
->>>>>>> 2b2c306887732c24790de065f90dbc40d11ff02d
     respond_to do |format|
       format.html
-      format.js
+      format.js 
     end
   end
 

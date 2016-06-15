@@ -51,8 +51,13 @@
 
 
   <% end %>
+  <% if current_user.nil? %>
+        <span class="light white ">Please <b>Sign Up</b> Or <b>Login</b> First To Add Price</span>
+        <% else %>
 <div class="light">
 	<%= link_to 'Add Price', "#add_price", "data-toggle" => "modal", :class => 'btn btn-submit' %>
 </div>
+
+<% end %>
 <% end %>
 <!-- Product Deatils end -->
