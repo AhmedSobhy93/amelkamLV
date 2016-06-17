@@ -63,9 +63,10 @@ end
   delete 'destory_price' => 'prices#destroy'
 
   get 'price_details' => 'prices#price_details'
-  
+
   post 'add_comment' =>'comments#add_comment'
   delete 'destroy_comment' => 'comments#destroy'
+  patch 'update_comment' => 'comments#update_comment'
   ##########
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

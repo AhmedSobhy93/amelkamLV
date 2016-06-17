@@ -2,7 +2,19 @@
 
   <h2 class="light white"><%= p.price %> </h2><h6 class="light white">Added <%= time_ago_in_words(p.created_at)  %> ago</h6>
 <% if current_user.id=p.user_id %>
-  <%= link_to "Delete Price",destory_price_path(:id=>p.id),:method=>'DELETE', :class => 'btn btn-lg' %>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-6">
+      <table style="align:center">
+        <tr>
+
+          <td><%= link_to "Delete Price",destory_price_path(:id=>p.id),:method=>'DELETE', :class => 'btn btn-lg btn-danger' %></td>
+          <td><%= link_to 'Update Price', "#update_price", "data-toggle" => "modal", :class => 'btn btn-lg btn-primary' %></td>
+        </tr>
+      </table>
+      </div>
+      <div class="col-sm-3"></div>
+  </div>
 <% end %>
                <div class="detailBox">
                  Price Rate :- <%= rating_for p,'price',stars:5, half_show: true, path: 'star_icons',cancel_place: 'right', space: true, disable_after_rate: true, target: '#hintDiv' , targetType: "score"%>
@@ -13,7 +25,7 @@
 
 <div class="detailBox">
     <div class="titleBox">
-      <label>Comments</label>
+      <label>User Comments</label>
     </div>
     <div class="commentBox">
         
@@ -22,10 +34,10 @@
     <div class="actionBox">
         <%= paginate comments %>
 
-        <ul class="commentList ">
+        
           
            <% comments.each do |c| %>
-       
+            <ul class="commentList ">
               <li>
                   <div class="commenterImage">
                   <% if c.user.avatar.nil? %>
@@ -35,9 +47,12 @@
                   <% end %>
                   </div>
                   <div class="commentText">
-                   <h6 class="light "><%= c.body %></h6>
-                   <span class="light white "><sup><b><%= time_ago_in_words(c.created_at) %> ago</b></sup>
-                       </span>
+
+                   <div class="light "><textarea disabled rows="5" cols="5" class="ta6 "><%= c.body %></textarea></div>
+                   <span class="light white ">
+                     <sup><b><%= time_ago_in_words(c.created_at) %> ago</b>
+                     </sup>
+                  </span>
 
                     <table>
                      <tr>
@@ -46,7 +61,7 @@
                        <td>                   
                          <%= link_to "Delete",destroy_comment_path(:id=>c.id),:method=>'DELETE' %>
                         </td>
-                        <td>update
+                        <td><%= link_to "Update",'#update_comment', "data-toggle" => "modal" %>
                         </td>
 
                         <% end %>
@@ -55,10 +70,41 @@
                  
                   </div>
               </li>
-             
+
+
+<div class="modal fade" id="update_comment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-popup">
+        <a href="#" class="close-link" data-dismiss="modal"><i class="icon_close_alt2"></i></a>
+        <h3 class="white">Update Comment</h3>
+        <div id="register_errors">
+        <h1></h1>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+
+          </div>
+
+        </div>
+       <%= form_tag update_comment_path,method: :patch,html:{class:'form-horizontal'} do %>
+           <div class="form-group">
+              <%= text_area_tag :body,c.body,class:'form-control',content:c.body %>
+           </div>
+
+          <%= hidden_field_tag :id ,params[:id] ,value: c.id %>
+          <br/>
+          
+
+          <p><div> <%= submit_tag "Update Comment" ,  class: "btn btn-submit" %></div></p>
+      
+    <% end %>
+      </div>
+    </div>
+</div>
+            </ul> 
           <% end %>
           <!-- comments end -->
-        </ul>
+        
         <% if current_user.nil? %>
         <span class="light white ">Please <b>Sign Up</b> Or <b>Login</b> First To Add Comment</span>
         <% else %>
@@ -66,7 +112,7 @@
 
             <%= hidden_field_tag 'price_id',p.id %>
             <div class="form-group">
-                <%= text_field_tag :comment_body,params[:comment_body],class:'form-control',placeholder: 'Your Comment' %>
+                <%= text_area_tag :comment_body,params[:comment_body],class:'form-control',placeholder: 'Your Comment' %>
             </div>
 
             <div class="form-group">

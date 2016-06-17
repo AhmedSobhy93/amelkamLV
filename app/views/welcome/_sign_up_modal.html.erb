@@ -3,7 +3,7 @@
 <div class="modal fade" id="sign_up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<a href="#" class="close-link"><i class="icon_close_alt2" data-dismiss="modal"></i></a>
 				<h3 class="white">Sign Up</h3>
 				<div id="register_errors">
 				
@@ -47,8 +47,7 @@
 				</h4>
 				<br/>
 				
-
-					 <div style="position:relative;">
+ 					<div style="position:relative;">
 						<a class='btn btn-primary' href='javascript:;'>
 							Upload Profile Image...
 							<input type="file" name="avatar" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>

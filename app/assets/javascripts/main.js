@@ -162,7 +162,7 @@ jQuery(function($) {
 
 	$('.modal-popup .close-link').click(function(event){
 		event.preventDefault();
-		$('#modal1').modal('hide');
+		$('#sign_up').modal('toggle');
 		$('#modal2').modal('hide');
 		$('#modal3').modal('hide');
 	});
