@@ -266,7 +266,14 @@
 						<div class="box-main" data-img="img/pricing2.jpg">
 							<h4 class="white">Join Us </h4>
 							<h4 class="white regular light"> right<span class="small-font">now..</span></h4>
-							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
+							
+
+							 <% if !user_signed_in? %>
+                 
+              
+			               	  <li ><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-white-fill ' %></li>
+			                
+			                <% end %>
 							<i class="info-icon icon_question"></i>
 						</div>
 						<div class="box-second">

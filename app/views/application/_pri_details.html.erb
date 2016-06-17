@@ -1,20 +1,22 @@
 <% price_details.each do |p| %>
 
   <h2 class="light white"><%= p.price %> </h2><h6 class="light white">Added <%= time_ago_in_words(p.created_at)  %> ago</h6>
-<% if current_user.id=p.user_id %>
-  <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-6">
-      <table style="align:center">
-        <tr>
+<% if current_user %>  
+  <% if current_user.id=p.user_id %>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-6">
+        <table style="align:center">
+          <tr>
 
-          <td><%= link_to "Delete Price",destory_price_path(:id=>p.id),:method=>'DELETE', :class => 'btn btn-lg btn-danger' %></td>
-          <td><%= link_to 'Update Price', "#update_price", "data-toggle" => "modal", :class => 'btn btn-lg btn-primary' %></td>
-        </tr>
-      </table>
-      </div>
-      <div class="col-sm-3"></div>
-  </div>
+            <td><%= link_to "Delete Price",destory_price_path(:id=>p.id),:method=>'DELETE', :class => 'btn btn-lg btn-danger' %></td>
+            <td><%= link_to 'Update Price', "#update_price", "data-toggle" => "modal", :class => 'btn btn-lg btn-primary' %></td>
+          </tr>
+        </table>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+  <% end %>
 <% end %>
                <div class="detailBox">
                  Price Rate :- <%= rating_for p,'price',stars:5, half_show: true, path: 'star_icons',cancel_place: 'right', space: true, disable_after_rate: true, target: '#hintDiv' , targetType: "score"%>
@@ -45,6 +47,7 @@
                   <% else %>
                      <%= image_tag(c.user.avatar) %>
                   <% end %>
+                   <sup><%= c.user.name %></sup>
                   </div>
                   <div class="commentText">
 
@@ -56,14 +59,16 @@
 
                     <table>
                      <tr>
-                      <% if current_user.id=c.user_id %>
-                         
-                       <td>                   
-                         <%= link_to "Delete",destroy_comment_path(:id=>c.id),:method=>'DELETE' %>
-                        </td>
-                        <td><%= link_to "Update",'#update_comment', "data-toggle" => "modal" %>
-                        </td>
+                      <% if current_user %>
+                        <% if current_user.id=c.user_id %>
+                           
+                         <td style=" padding: 5px;">                   
+                           <%= link_to "Delete",destroy_comment_path(:id=>c.id),:method=>'DELETE' %>  
+                          </td>
+                          <td style=" padding: 5px;""> <%= link_to "Update",'#update_comment', "data-toggle" => "modal" %>
+                          </td>
 
+                          <% end %>
                         <% end %>
                      </tr>
                    </table>
@@ -76,7 +81,7 @@
     <div class="modal-dialog">
       <div class="modal-content modal-popup">
         <a href="#" class="close-link" data-dismiss="modal"><i class="icon_close_alt2"></i></a>
-        <h3 class="white">Update Comment</h3>
+        <h3 class="white">Update Price</h3>
         <div id="register_errors">
         <h1></h1>
         </div>
@@ -98,6 +103,9 @@
           <p><div> <%= submit_tag "Update Comment" ,  class: "btn btn-submit" %></div></p>
       
     <% end %>
+
+
+
       </div>
     </div>
 </div>
@@ -125,6 +133,58 @@
         <% end %>
     </div>
 </div>
+
+
+
+<div class="modal fade" id="update_price" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-popup">
+        <a href="#" class="close-link" data-dismiss="modal"><i class="icon_close_alt2"></i></a>
+        <h3 class="white">Update Price</h3>
+        <div id="register_errors">
+        <h1></h1>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+
+          </div>
+
+        </div>
+<%= form_tag update_price_path,method: :patch,html:{class:'form-horizontal'} do %>
+
+          
+          <div class="form-group">
+              <%= text_field_tag :price,p.price,class:'form-control',content:p.price %>
+           </div>
+
+          <br/>
+          <%= text_field_tag :address ,p.address ,class: 'form-control form-white' %>
+          <br/>
+          
+           <%= hidden_field_tag :id ,params[:id] ,value: p.id %>
+          <br/>
+
+           <div style="position:relative;">
+            <a class='btn btn-primary' href='javascript:;'>
+              Upload Product Image...
+              <input type="file" name="image" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info1").html($(this).val());'>
+            </a>
+            &nbsp;
+            <span class='label label-info' id="upload-file-info1"></span>
+          </div>
+
+
+
+          <p><div> <%= submit_tag "Update Price" ,  class: "btn btn-submit" %></div></p>
+        
+
+    <% end %>
+      </div>
+    </div>
+</div>
+    
+
+
 
 
 <% end %>

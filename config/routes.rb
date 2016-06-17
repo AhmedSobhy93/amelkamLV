@@ -61,7 +61,8 @@ end
   ################
   post 'add_price' =>'prices#add_price'
   delete 'destory_price' => 'prices#destroy'
-
+  patch 'update_price' => 'prices#update_price'
+  
   get 'price_details' => 'prices#price_details'
 
   post 'add_comment' =>'comments#add_comment'
