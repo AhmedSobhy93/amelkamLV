@@ -1,0 +1,15 @@
+<% rate1.each do |r| %>
+	
+	<% if r.rate==1 %>
+		<h6 class="light white">Not Real Price</h6>
+	<% elsif r.rate==2 %>
+		<h6 class="light white">Not Bad Price </h6>
+	<% elsif r.rate==3 %>
+		<h6 class="light white">Good Price </h6>
+	<% elsif r.rate==4 %>
+		<h6 class="light white">Very Good Price</h6>
+	<% elsif r.rate==5 %>
+		<h6 class="light white">Excellent Price</h6>
+	<% end %>
+	 <h6 class="light white"><sub><b>This will help other users to find Best Price. Thanks! </b></sub></h6>
+<% end %>

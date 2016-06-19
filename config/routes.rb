@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  post '/rate' => 'rater#create', :as => 'rate'
   get 'search/index'
 
   #mount_devise_token_auth_for 'User', at: 'auth'
@@ -11,7 +10,7 @@ Rails.application.routes.draw do
   resources :categories
   devise_for :users 
   resources :searches
- 
+  resources :rates
 
 namespace :api do
   namespace :v1 do
@@ -62,12 +61,14 @@ end
   post 'add_price' =>'prices#add_price'
   delete 'destory_price' => 'prices#destroy'
   patch 'update_price' => 'prices#update_price'
-  
+
   get 'price_details' => 'prices#price_details'
 
   post 'add_comment' =>'comments#add_comment'
   delete 'destroy_comment' => 'comments#destroy'
   patch 'update_comment' => 'comments#update_comment'
+
+  get 'update_rate' => 'rates#update_rate'
   ##########
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

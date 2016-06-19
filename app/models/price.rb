@@ -3,8 +3,6 @@ class Price < ActiveRecord::Base
 	
   attr_accessible :image,:price,:address,:product_id,:user_id,:avg_rating
 
-  ratyrate_rateable 'price','image'
-
   mount_uploader :image, AvatarUploader
   
 
@@ -12,4 +10,5 @@ class Price < ActiveRecord::Base
   belongs_to :product
   belongs_to :user
   has_many :comments
+  has_many :rates
 end

@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   
   has_many :prices
   has_many :comments
-  
+  has_many :rates
 
 
 
@@ -33,8 +33,6 @@ class User < ActiveRecord::Base
   # validates_presence_of   :avatar
   # validates_integrity_of  :avatar
   # validates_processing_of :avatar
-
-  ratyrate_rater
 
  
 
