@@ -50,8 +50,8 @@ gem 'simple_token_authentication', '~> 1.0' # see semver.org
 
 #not working gem 
 #gem 'ajaxful_rating'
-
-gem 'ratyrate'
+# gem 'letsrate'
+# gem 'ratyrate'
 
 gem 'cancancan', '~> 1.10'
 #
@@ -64,7 +64,6 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
-gem 'letsrate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -3,7 +3,7 @@
 <div class="modal fade" id="add_price" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<a href="#" class="close-link" data-dismiss="modal"><i class="icon_close_alt2"></i></a>
 				<h3 class="white">Add Price</h3>
 				<div id="register_errors">
 				
@@ -22,18 +22,14 @@
 					 <div style="position:relative;">
 						<a class='btn btn-primary' href='javascript:;'>
 							Upload Product Image...
-							<input type="file" name="image" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+							<input type="file" name="image" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info2").html($(this).val());'>
 						</a>
 						&nbsp;
-						<span class='label label-info' id="upload-file-info"></span>
+						<span class='label label-info' id="upload-file-info2"></span>
 					</div>
-
-
 
  					<p><div><%= f.submit "Submit", :class => 'btn btn-submit' %></div></p>
 			
-				
-
 		<% end %>
 			</div>
 		</div>

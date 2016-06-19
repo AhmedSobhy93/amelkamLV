@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612223446) do
+ActiveRecord::Schema.define(version: 20160619122839) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20160612223446) do
     t.text     "address",    limit: 65535
     t.float    "longitude",  limit: 24
     t.float    "latitude",   limit: 24
-    t.float    "avg_rating", limit: 24
+    t.decimal  "avg_rating",               precision: 16, scale: 2
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.integer  "product_id", limit: 4
@@ -107,17 +107,15 @@ ActiveRecord::Schema.define(version: 20160612223446) do
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "rates", force: :cascade do |t|
-    t.integer  "rater_id",      limit: 4
-    t.integer  "rateable_id",   limit: 4
-    t.string   "rateable_type", limit: 255
-    t.float    "stars",         limit: 24,  null: false
-    t.string   "dimension",     limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "rate",       limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "price_id",   limit: 4
+    t.integer  "user_id",    limit: 4
   end
 
-  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
-  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id", using: :btree
+  add_index "rates", ["price_id"], name: "index_rates_on_price_id", using: :btree
+  add_index "rates", ["user_id"], name: "index_rates_on_user_id", using: :btree
 
   create_table "rating_caches", force: :cascade do |t|
     t.integer  "cacheable_id",   limit: 4
@@ -173,4 +171,6 @@ ActiveRecord::Schema.define(version: 20160612223446) do
   add_foreign_key "prices", "products"
   add_foreign_key "prices", "users"
   add_foreign_key "products", "categories"
+  add_foreign_key "rates", "prices"
+  add_foreign_key "rates", "users"
 end

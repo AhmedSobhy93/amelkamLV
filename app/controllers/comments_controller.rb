@@ -64,6 +64,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update_comment
+    comment = Comment.find_by_id(params[:id])
+
+    if comment.update_attributes(body: params[:body])
+      redirect_to root_path ,notice: 'comment updated successfully'
+    else
+      redirect_to root_path ,notice: 'comment not updated successfully'
+    end
+  end
 
   def add_comment
     price_id = params[:price_id]
@@ -78,7 +87,7 @@ class CommentsController < ApplicationController
       if @comment.save
         f.html {redirect_to root_path ,notice:'Comment was successfully added'}
       else
-        f.html {redirect_to root_path ,notice:'Comment was not successfully added'}
+        f.html {redirect_to root_path ,notice:'Comment was successfully added'}
       end
     end
 

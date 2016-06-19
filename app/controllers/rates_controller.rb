@@ -1,7 +1,7 @@
 class RatesController < ApplicationController
   before_action :set_rate, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
-
+  skip_before_filter :verify_authenticity_token  
 
   # GET /rates
   # GET /rates.json
@@ -62,6 +62,39 @@ class RatesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+ ###get
+  def update_rate
+    
+
+    # @rate1 = Rate.where("price_id = :price_id AND user_id = :user_id",{:price_id => params[:price_id], :user_id => params[:user_id]})
+    @rate1 = Rate.where(price_id: params[:price_id]).where(:user_id => current_user.id)
+    
+    if @rate1.empty?
+      @rate1 = Rate.new
+      @rate1.price_id = params[:price_id]
+      @rate1.user_id = current_user.id
+      @rate1.rate = params[:rate]
+      @rate1.save
+    end
+
+    respond_to do |format|
+      if @rate1.update_all(:rate => params['rate'])
+
+        avg_rating = Rate.group(:price_id).average(:rate)
+        # puts avg_rating.to_h[1]
+
+        price_avg = Price.find_by_id(params[:price_id])
+        price_avg.update(:avg_rating => avg_rating.to_h[1])
+
+        format.js 
+      else 
+        format.js 
+      end 
+    end
+  end
+
+
 
 
 #POST api/v1/rate.json

@@ -65,7 +65,16 @@ class PricesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
+  def update_price
+     price = Price.find_by_id(params[:id])
+
+    if price.update_attributes(price: params[:price] ,address: params[:address],image: params['image'])
+      redirect_to root_path ,notice: 'Price updated successfully'
+    else
+      redirect_to root_path ,notice: 'Price not updated successfully'
+    end
+  end  
 
   def price_details
 

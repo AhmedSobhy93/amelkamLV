@@ -90,7 +90,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.1)
-    letsrate (1.0.9)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -161,7 +160,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (11.1.2)
-    ratyrate (1.2.2.alpha)
     rdoc (4.2.2)
       json (~> 1.4)
     responders (2.1.2)
@@ -220,7 +218,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-historyjs
   jquery-rails
-  letsrate
   mysql2 (>= 0.3.13, < 0.5)
   omniauth
   omniauth-facebook
@@ -228,7 +225,6 @@ DEPENDENCIES
   omniauth-twitter
   protected_attributes
   rails (= 4.2.6)
-  ratyrate
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_token_authentication (~> 1.0)
