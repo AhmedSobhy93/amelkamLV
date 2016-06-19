@@ -8,14 +8,16 @@
 
     </div>
     <div class="form-group">
-      <!-- min price -->
+        <%= text_field_tag :min,params[:min],class:'form-control',placeholder: 'Min Price' %>
+         <%= text_field_tag :max,params[:max],class:'form-control',placeholder: 'Max Price' %>
     </div>
 
     <div class="form-group">
       <!-- location -->
-      <select name="city">
+      <select name="address" class="form-control">
+          <option value="">Adress</option>
           <option value="cairo">Cairo</option>
-          <option value="Alex">Ålexandria</option>
+          <option value="Alex">Alexandria</option>
           <option value="Minofia">Minofia</option>
           <option value="Qaliobia">Qaliobia</option>
           <option value="Aswan">Aswan</option>

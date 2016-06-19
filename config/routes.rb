@@ -45,6 +45,7 @@ end
 ###Search API
 ##########################
   get 'api/v1/searchbarcode/:barcode' =>'search#apiSearch'
+  post 'api/v1/advancedsearch' => 'search#apiAdvancedSearch'
 #######################
 #Product API
 #####################
