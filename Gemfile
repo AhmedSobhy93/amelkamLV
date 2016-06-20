@@ -48,10 +48,6 @@ gem 'carrierwave'
 #gem 'devise-token_authenticatable'
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
 
-#not working gem 
-#gem 'ajaxful_rating'
-# gem 'letsrate'
-# gem 'ratyrate'
 
 gem 'cancancan', '~> 1.10'
 #
